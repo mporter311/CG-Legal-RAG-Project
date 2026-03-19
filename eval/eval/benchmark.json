@@ -1,0 +1,124 @@
+{
+  "$schema_version": "1.1",
+  "$comment": "MCM Punitive Articles retrieval benchmark. Each entry has a natural-language query and gold labels for evaluation. gold.article_numbers are sufficient for basic recall; gold.chunk_ids provide fine-grained evaluation once the index is built and specific chunk IDs are inspected. CHANGES v1.1: fixed total_questions (was 3, now 10); normalised article_numbers for 112a; added difficulty-weighted notes.",
+  "metadata": {
+    "source_doc": "MCM 2024",
+    "source_doc_legacy": "MCM 2019",
+    "section": "Punitive Articles (Part IV)",
+    "created_by": "pio-rag team",
+    "total_questions": 10,
+    "notes": "Gold chunk_ids are intentionally empty until first index run. After building the index, run with --verbose, inspect which chunk_ids contain the actual answer content, and populate chunk_ids for fine-grained Precision evaluation."
+  },
+  "questions": [
+    {
+      "id": "q001",
+      "query": "What does Article 92 cover and what are its elements?",
+      "difficulty": "easy",
+      "category": "article_lookup",
+      "gold": {
+        "article_numbers": ["92"],
+        "chunk_ids": [],
+        "notes": "Article 92 covers failure to obey order or regulation. Three offenses: (1) violation of lawful general order/regulation, (2) failure to obey other lawful order, (3) dereliction of duty. Relevant chunks should contain the 'b. Elements' section."
+      }
+    },
+    {
+      "id": "q002",
+      "query": "What are the elements of Article 86 unauthorized absence?",
+      "difficulty": "easy",
+      "category": "elements",
+      "gold": {
+        "article_numbers": ["86"],
+        "chunk_ids": [],
+        "notes": "Article 86 AWOL/UA. Elements: accused was required to be at a certain place at a certain time, accused knew of the requirement, accused failed to appear or departed without authority."
+      }
+    },
+    {
+      "id": "q003",
+      "query": "What is the maximum punishment for larceny under Article 121?",
+      "difficulty": "medium",
+      "category": "maximum_punishment",
+      "gold": {
+        "article_numbers": ["121"],
+        "chunk_ids": [],
+        "notes": "Article 121 larceny and wrongful appropriation. Maximum punishment depends on value of property and type (larceny vs wrongful appropriation). Relevant chunks must contain the 'd. Maximum punishment' section."
+      }
+    },
+    {
+      "id": "q004",
+      "query": "What constitutes assault under the UCMJ?",
+      "difficulty": "medium",
+      "category": "elements",
+      "gold": {
+        "article_numbers": ["128"],
+        "chunk_ids": [],
+        "notes": "Article 128 assault. 2024 MCM has three categories: simple assault, assault consummated by battery, aggravated assault. This query has no article number — tests semantic retrieval quality."
+      }
+    },
+    {
+      "id": "q005",
+      "query": "What are the elements of insubordinate conduct toward a warrant officer?",
+      "difficulty": "hard",
+      "category": "elements",
+      "gold": {
+        "article_numbers": ["91"],
+        "chunk_ids": [],
+        "notes": "Article 91 insubordinate conduct toward warrant officer, noncommissioned officer, or petty officer. Hard because 'warrant officer' is not in the article title; tests whether the system retrieves Art. 91 over Art. 89/90."
+      }
+    },
+    {
+      "id": "q006",
+      "query": "What does Article 134 cover as a general article?",
+      "difficulty": "easy",
+      "category": "article_lookup",
+      "gold": {
+        "article_numbers": ["134"],
+        "chunk_ids": [],
+        "notes": "Article 134 general article covers disorders/neglects prejudicial to good order and discipline, conduct of a nature to bring discredit upon the armed forces, and crimes/offenses not capital."
+      }
+    },
+    {
+      "id": "q007",
+      "query": "How does the MCM define conspiracy under Article 81?",
+      "difficulty": "medium",
+      "category": "elements",
+      "gold": {
+        "article_numbers": ["81"],
+        "chunk_ids": [],
+        "notes": "Article 81 conspiracy: agreement between two or more persons to commit a UCMJ offense, plus an overt act by one of the conspirators in furtherance of the agreement."
+      }
+    },
+    {
+      "id": "q008",
+      "query": "What is dereliction of duty and how is it proven?",
+      "difficulty": "medium",
+      "category": "elements",
+      "gold": {
+        "article_numbers": ["92"],
+        "chunk_ids": [],
+        "notes": "Dereliction of duty is charged under Article 92(3). Elements: accused had prescribed duties, accused knew or should have known of those duties, accused was willfully or negligently derelict. Note: same article as q001 but targets a specific sub-offense."
+      }
+    },
+    {
+      "id": "q009",
+      "query": "What offenses fall under conduct unbecoming an officer?",
+      "difficulty": "hard",
+      "category": "article_lookup",
+      "gold": {
+        "article_numbers": ["133"],
+        "chunk_ids": [],
+        "notes": "Article 133 conduct unbecoming an officer and a gentleman. Hard because 'conduct unbecoming' is a broad concept; system must retrieve Art. 133 not Art. 134."
+      }
+    },
+    {
+      "id": "q010",
+      "query": "What is the punishment for wrongful use of controlled substances?",
+      "difficulty": "medium",
+      "category": "maximum_punishment",
+      "gold": {
+        "article_numbers": ["112a"],
+        "chunk_ids": [],
+        "notes": "Article 112a wrongful use, possession, manufacture, distribution of controlled substances. Note: article number contains 'a' suffix — tests normalisation of sub-article numbers in is_relevant()."
+      }
+    }
+  ]
+}
