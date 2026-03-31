@@ -102,7 +102,7 @@ def load_index(index_dir: Path, index_name: str):
 
 def embed_query(query: str, model_name: str) -> np.ndarray:
     from sentence_transformers import SentenceTransformer
-    model = SentenceTransformer(model_name)
+    model = SentenceTransformer(model_name, local_files_only=True)
     vec = model.encode([query], normalize_embeddings=True, convert_to_numpy=True)
     return vec.astype(np.float32)
 
