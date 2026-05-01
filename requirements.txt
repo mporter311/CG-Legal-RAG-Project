@@ -1,0 +1,30 @@
+# pio-rag — CG Legal RAG System
+# Requirements file — install with:
+#   pip install -r requirements.txt
+#
+# For offline / VPN / air-gapped install, see OFFLINE_INSTALL.md
+
+# ── Core retrieval ────────────────────────────────────────────────────────────
+pypdf>=4.0.0                   # PDF text extraction (ingest scripts)
+sentence-transformers>=2.7.0   # Dense embeddings + CrossEncoder reranker
+faiss-cpu>=1.7.4               # Vector similarity search (FAISS index)
+numpy>=1.26.0                  # Numerical operations throughout
+rank-bm25>=0.2.2               # BM25 keyword search index
+
+# ── GUI ───────────────────────────────────────────────────────────────────────
+Pillow>=10.0.0                 # Background image rendering in chat_gui.py
+                               # tkinter is bundled with Python — no pip install needed
+
+# ── Terminal interface ────────────────────────────────────────────────────────
+rich>=13.0.0                   # Colored terminal output in chat.py (optional)
+
+# ── Evaluation tracking ───────────────────────────────────────────────────────
+mlflow>=2.12.0                 # Experiment tracking in eval_retrieval.py (optional)
+
+# ── Optional — local LLM synthesis ───────────────────────────────────────────
+# llama-cpp-python              # Uncomment to enable Mistral 7B AI summaries
+#                               # Install notes:
+#                               #   Windows:  pip install llama-cpp-python
+#                               #   Mac/Linux: pip install llama-cpp-python
+#                               #   If install fails, a C++ compiler is required.
+#                               #   Pre-built wheels: https://github.com/abetlen/llama-cpp-python/releases

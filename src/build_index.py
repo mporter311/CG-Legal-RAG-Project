@@ -72,6 +72,27 @@ def load_chunks(paths: list[Path]) -> tuple[list[str], list[dict]]:
     return texts, metas
 
 
+def build_embedding_texts(texts: list[str], metas: list[dict]) -> list[str]:
+    """
+    Prepend structural metadata (heading_path, chapter/section titles) to each
+    chunk's text before embedding.  The stored text is unchanged — only the
+    vector captures this richer signal, so structural queries like
+    "Chapter 1" or "NJP Section B" match correctly.
+    """
+    result = []
+    for text, meta in zip(texts, metas):
+        heading = meta.get("heading_path") or []
+        prefix = " > ".join(str(h) for h in heading) if heading else ""
+        if not prefix:
+            parts = [
+                meta.get("chapter_title", ""),
+                meta.get("section_title", "") or meta.get("article_title", ""),
+            ]
+            prefix = " > ".join(p for p in parts if p)
+        result.append(f"{prefix}\n\n{text}" if prefix else text)
+    return result
+
+
 def embed_texts(texts: list[str], model_name: str, batch_size: int = 64) -> np.ndarray:
     from sentence_transformers import SentenceTransformer
 
@@ -170,7 +191,9 @@ def main():
     texts, metas = load_chunks(chunk_paths)
     print(f"[INFO] {len(texts)} total chunks loaded")
 
-    embeddings = embed_texts(texts, args.model, args.batch)
+    embed_texts_list = build_embedding_texts(texts, metas)
+    print(f"[INFO] Heading-augmented embedding texts built ({len(embed_texts_list)} entries)")
+    embeddings = embed_texts(embed_texts_list, args.model, args.batch)
     index      = build_faiss_index(embeddings)
     save_index(index, metas, texts, args.index_dir, args.index_name)
     print("[DONE] Index ready.")

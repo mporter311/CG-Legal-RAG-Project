@@ -1,0 +1,133 @@
+{
+  "title": "Ask a Coast Guard Lawyer \u2014 Demo Question Set",
+  "version": "presentation-v1",
+  "description": "15 curated questions for presenting the CG Legal RAG system. Covers all 5 ingested documents. Mix of retrieval-only and LLM-summary modes. Questions selected for high retrieval confidence and clear, useful outputs.",
+  "usage": {
+    "retrieval_only": "python src/chat.py   (then ask the question)",
+    "llm_summary": "python src/chat.py --llm /path/to/mistral.gguf   (then ask the question)",
+    "single_query": "python src/query_wo_model.py \"<question>\" --retriever hybrid --rerank",
+    "with_llm": "python src/query.py \"<question>\" --retriever hybrid --rerank --llm /path/to/model.gguf"
+  },
+  "questions": [
+    {
+      "id": "demo_01",
+      "question": "What are the three ways to commit an offense under Article 92?",
+      "document": "MCM 2024",
+      "mode": "retrieval-only",
+      "category": "article_lookup",
+      "why": "Article filter guarantees correct chunks. Three offenses clearly enumerated in text. Fast, visually clean output."
+    },
+    {
+      "id": "demo_02",
+      "question": "What is the maximum punishment for larceny under Article 121?",
+      "document": "MCM 2024",
+      "mode": "llm-summary",
+      "category": "maximum_punishment",
+      "why": "Punishment tables are structured \u2014 LLM synthesizes them into plain English clearly. Strong grounded output example."
+    },
+    {
+      "id": "demo_03",
+      "question": "What are the elements required to prove desertion under Article 85?",
+      "document": "MCM 2024",
+      "mode": "llm-summary",
+      "category": "elements",
+      "why": "Legal elements lists are ideal for LLM synthesis. Shows the system reasoning about intent requirements."
+    },
+    {
+      "id": "demo_04",
+      "question": "Under Article 112a, what does 'wrongful use' of a controlled substance mean?",
+      "document": "MCM 2024",
+      "mode": "retrieval-only",
+      "category": "definition",
+      "why": "Demonstrates sub-article detection (112a). Verbatim definition text is more legally reliable than synthesis."
+    },
+    {
+      "id": "demo_05",
+      "question": "What is the Coast Guard's policy on hazing and what does it prohibit?",
+      "document": "CG Conduct Manual",
+      "mode": "llm-summary",
+      "category": "policy_lookup",
+      "why": "High-relevance topic for CGA cadets. Query expansion (hazing\u2192Art.93) pulls cross-corpus content. LLM produces useful policy summary."
+    },
+    {
+      "id": "demo_06",
+      "question": "What actions is a member required to take if they are arrested by civilian authorities?",
+      "document": "CG Conduct Manual",
+      "mode": "retrieval-only",
+      "category": "procedure",
+      "why": "Precise procedural answer in CM 1.B.3.b. Shows non-MCM document retrieval. Verbatim requirement language is important here."
+    },
+    {
+      "id": "demo_07",
+      "question": "What fraternization relationships are prohibited under the Conduct Manual?",
+      "document": "CG Conduct Manual",
+      "mode": "llm-summary",
+      "category": "policy_lookup",
+      "why": "Complex multi-section policy with officer/enlisted nuance. LLM synthesizes clearly. Highly relevant to CGA cadet audience."
+    },
+    {
+      "id": "demo_08",
+      "question": "What types of administrative investigations does the Coast Guard use and when is each required?",
+      "document": "CG Administrative Investigations Manual",
+      "mode": "llm-summary",
+      "category": "definition",
+      "why": "Multi-section taxonomy (standard, formal board, LOD). LLM synthesizes the categories well. Shows AIM coverage."
+    },
+    {
+      "id": "demo_09",
+      "question": "What rights does a party have during a Coast Guard administrative investigation?",
+      "document": "CG Administrative Investigations Manual",
+      "mode": "retrieval-only",
+      "category": "policy_lookup",
+      "why": "Ch10 F. chunks are directly responsive and well-structured. Verbatim rights language more reliable than synthesis."
+    },
+    {
+      "id": "demo_10",
+      "question": "Under what conditions can an enlisted member be separated for misconduct involving drugs?",
+      "document": "CG Military Separations Manual",
+      "mode": "llm-summary",
+      "category": "procedure",
+      "why": "High-confidence retrieval on Q. section. Multiple conditions that LLM structures clearly. Operationally relevant."
+    },
+    {
+      "id": "demo_11",
+      "question": "What is the High Year Tenure policy and when does it require separation?",
+      "document": "CG Military Separations Manual",
+      "mode": "retrieval-only",
+      "category": "policy_lookup",
+      "why": "Concrete policy with specific grade/year thresholds. Retrieval-only shows raw numbers clearly. Good numerical policy example."
+    },
+    {
+      "id": "demo_12",
+      "question": "What happens to a Coast Guard member's career after a confirmed drug incident finding?",
+      "document": "CG Military Substance Abuse Manual",
+      "mode": "llm-summary",
+      "category": "procedure",
+      "why": "Multi-step career consequence sequence \u2014 DI finding, separation initiation, characterization. LLM synthesizes the flow clearly."
+    },
+    {
+      "id": "demo_13",
+      "question": "What are the separation consequences for a second alcohol incident?",
+      "document": "CG Military Substance Abuse Manual",
+      "mode": "retrieval-only",
+      "category": "policy_lookup",
+      "why": "Demonstrates the reranker fix (previously a miss, now rank #1 with CE score 2.77). Section H content is specific and direct."
+    },
+    {
+      "id": "demo_14",
+      "question": "Can a Coast Guard member face both a court-martial and administrative separation for the same drug violation?",
+      "document": "MCM 2024 + CG Military Substance Abuse Manual",
+      "mode": "llm-summary",
+      "category": "cross_document",
+      "why": "Cross-document synthesis from MCM Art.112a AND SA Manual. Shows multi-source capability. High practical relevance."
+    },
+    {
+      "id": "demo_15",
+      "question": "What is an Article 31(b) rights warning and when must it be given during an investigation?",
+      "document": "CG Administrative Investigations Manual + CG Military Substance Abuse Manual",
+      "mode": "llm-summary",
+      "category": "cross_document",
+      "why": "Cross-document: AIM covers Art.31(b) in investigation context, SA Manual in DI context. Important concept for any CG operator."
+    }
+  ]
+}

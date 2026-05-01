@@ -1,0 +1,41 @@
+# ── Python ────────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+
+# ── Virtual environments ──────────────────────────────────────────────────────
+.venv/
+env/
+venv/
+
+# ── Data — source PDFs and indexes (too large for repo) ──────────────────────
+data/raw/
+data/index/
+
+# ── Processed chunks (reproducible from ingest scripts) ──────────────────────
+data/processed/
+
+# ── LLM model files ───────────────────────────────────────────────────────────
+*.gguf
+*.bin
+*.safetensors
+
+# ── Eval results (machine-specific outputs) ───────────────────────────────────
+eval/results/
+
+# ── OS / editor artifacts ────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# ── Jupyter ───────────────────────────────────────────────────────────────────
+.ipynb_checkpoints/
+*.ipynb
+
+# ── MLflow / experiment tracking ─────────────────────────────────────────────
+mlruns/

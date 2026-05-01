@@ -1,0 +1,3332 @@
+{
+  "$schema_version": "2.0",
+  "$comment": "CG_Law_RAG comprehensive evaluation benchmark. Covers all 5 ingested documents: MCM 2024 Punitive Articles, CG Conduct Manual (M1600.2), CG Administrative Investigations Manual (M5830.1A), CG Military Separations Manual (1000.4C), CG Military Substance Abuse and Behavioral Addiction Program (1000.10B). Questions vary in phrasing, difficulty, and category to stress-test both retrieval precision and LLM generation quality.",
+  "metadata": {
+    "source_docs": [
+      "MCM 2024 Punitive Articles",
+      "CG Conduct Manual (COMDTINST M1600.2)",
+      "CG Administrative Investigations Manual (COMDTINST M5830.1A)",
+      "CG Military Separations Manual (COMDTINST 1000.4C)",
+      "CG Military Substance Abuse and Behavioral Addiction Program (COMDTINST 1000.10B)"
+    ],
+    "created_by": "pio-rag team",
+    "total_questions": 200,
+    "categories": [
+      "article_lookup",
+      "elements",
+      "maximum_punishment",
+      "policy_lookup",
+      "procedure",
+      "definition",
+      "cross_document",
+      "adversarial"
+    ],
+    "difficulty_distribution": {
+      "easy": 60,
+      "medium": 90,
+      "hard": 50
+    }
+  },
+  "questions": [
+    {
+      "id": "q001",
+      "query": "What does Article 92 cover and what are its elements?",
+      "difficulty": "easy",
+      "category": "article_lookup",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "92"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 92 covers failure to obey order or regulation. Elements include: lawful order existed, accused had knowledge of it, accused failed to obey.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q002",
+      "query": "What are the elements of Article 86 unauthorized absence?",
+      "difficulty": "easy",
+      "category": "elements",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "86"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 86 UA. Elements: member was required to be at a place, had knowledge of that requirement, failed to appear or departed without authority.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q003",
+      "query": "What is the maximum punishment for larceny under Article 121?",
+      "difficulty": "medium",
+      "category": "maximum_punishment",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "121"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 121 larceny and wrongful appropriation. Maximum punishment depends on value and type of property stolen.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q004",
+      "query": "What constitutes assault under the UCMJ?",
+      "difficulty": "medium",
+      "category": "elements",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "128"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 128 assault. Three types: simple assault, assault consummated by battery, aggravated assault.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q005",
+      "query": "What are the elements of insubordinate conduct toward a warrant officer?",
+      "difficulty": "hard",
+      "category": "elements",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "91"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 91 insubordinate conduct toward warrant officer, NCO, or petty officer.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q006",
+      "query": "What does Article 134 cover as a general article?",
+      "difficulty": "easy",
+      "category": "article_lookup",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "134"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 134 general article covers disorders/neglects prejudicial to good order, conduct unbecoming, and crimes/offenses not capital.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q007",
+      "query": "How does the MCM define conspiracy under Article 81?",
+      "difficulty": "medium",
+      "category": "elements",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "81"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 81 conspiracy: agreement between two or more persons to commit an offense, plus an overt act in furtherance.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q008",
+      "query": "What is dereliction of duty and how is it proven?",
+      "difficulty": "medium",
+      "category": "elements",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "92"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Dereliction of duty charged under Article 92(3). Elements: accused had prescribed duties, was derelict through neglect or culpable inefficiency.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q009",
+      "query": "What offenses fall under conduct unbecoming an officer?",
+      "difficulty": "hard",
+      "category": "article_lookup",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "133"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 133 conduct unbecoming an officer and a gentleman.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q010",
+      "query": "What is the punishment for wrongful use of controlled substances?",
+      "difficulty": "medium",
+      "category": "maximum_punishment",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "112"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 112a wrongful use/possession of controlled substances. Punishment varies by substance type.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q011",
+      "query": "What are the elements needed to prove desertion under the UCMJ?",
+      "difficulty": "medium",
+      "category": "elements",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "85"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 85 desertion. Elements: absence without authority, with intent to remain away permanently or to avoid hazardous duty.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q012",
+      "query": "How does Article 80 define an attempt under military law?",
+      "difficulty": "medium",
+      "category": "definition",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "80"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 80 attempts. Requires specific intent to commit the offense and an overt act amounting to more than mere preparation.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q013",
+      "query": "What does willfully disobeying a superior commissioned officer mean under Article 90?",
+      "difficulty": "medium",
+      "category": "elements",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "90"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 90. Elements: lawful order from superior commissioned officer, accused knew the person was a superior commissioned officer, willfully disobeyed.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q014",
+      "query": "What is the UCMJ article covering murder and what are the different types?",
+      "difficulty": "medium",
+      "category": "article_lookup",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "118"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 118 murder. Types: premeditated, felony murder, and murder with intent to kill or inflict great bodily harm.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q015",
+      "query": "What constitutes rape and sexual assault under Article 120?",
+      "difficulty": "hard",
+      "category": "article_lookup",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "120"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 120 rape and sexual assault. Covers rape, sexual assault, aggravated sexual contact, abusive sexual contact.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q016",
+      "query": "Under Article 128, what is the difference between simple assault and assault consummated by battery?",
+      "difficulty": "hard",
+      "category": "elements",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "128"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Simple assault: offer or attempt with present ability to injure. Battery: unlawful harmful or offensive touching.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q017",
+      "query": "What does Article 112 say about drunkenness on duty?",
+      "difficulty": "easy",
+      "category": "article_lookup",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "112"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 112 drunkenness and other incapacitation offenses. Covers drunk on duty, incapacitation on duty.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q018",
+      "query": "What are the elements of malingering under Article 83?",
+      "difficulty": "medium",
+      "category": "elements",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "83"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 83 malingering. Elements: feigning illness, injury, or incapacity or intentionally inflicting self-injury for the purpose of avoiding work or duty.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q019",
+      "query": "How is robbery defined and what is its maximum punishment under the MCM?",
+      "difficulty": "medium",
+      "category": "maximum_punishment",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "122"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 122 robbery. Taking property from another by force or threat of force with intent to permanently deprive.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q020",
+      "query": "What does Article 107 say about false official statements?",
+      "difficulty": "easy",
+      "category": "article_lookup",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "107"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 107 false official statements and false swearing. Requires false statement made with intent to deceive.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q021",
+      "query": "What does Article 113 prohibit regarding operation of vehicles?",
+      "difficulty": "easy",
+      "category": "article_lookup",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "113"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 113 drunken or reckless operation of a vehicle, aircraft, or vessel.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q022",
+      "query": "What are the elements of perjury under Article 131?",
+      "difficulty": "hard",
+      "category": "elements",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "131"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 131 perjury. Elements: judicial proceeding, oath lawfully administered, false statement, materiality, knowledge of falsity.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q023",
+      "query": "Can a member be charged under Article 134 for conduct not specifically listed elsewhere in the UCMJ?",
+      "difficulty": "hard",
+      "category": "article_lookup",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "134"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Yes, Article 134 serves as a catch-all for conduct prejudicial to good order and discipline or service discrediting.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q024",
+      "query": "What is the punishment for missing movement under Article 87?",
+      "difficulty": "medium",
+      "category": "maximum_punishment",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "87"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 87 missing movement. Two types: through design (intent) and through neglect. Different punishments.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q025",
+      "query": "Describe the elements of extortion under Article 127.",
+      "difficulty": "hard",
+      "category": "elements",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "127"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 127 extortion. Elements: communication of a threat to obtain something of value from another.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q026",
+      "query": "What makes a military order lawful for purposes of Article 92?",
+      "difficulty": "hard",
+      "category": "elements",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "92"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "A lawful order is one that doesn't violate the Constitution, statute, or the law of war. MCM Part IV Art. 92 discussion covers lawfulness test.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q027",
+      "query": "What does Article 93 say about cruelty and maltreatment of subordinates?",
+      "difficulty": "easy",
+      "category": "article_lookup",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "93"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 93 cruelty and maltreatment. Prohibits cruel, oppressive, or abusive treatment of subordinates.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q028",
+      "query": "Under Article 128b, what is domestic violence in the military context?",
+      "difficulty": "medium",
+      "category": "definition",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "128b"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 128b domestic violence. Assault committed against a spouse, intimate partner, or immediate family member.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q029",
+      "query": "How does the MCM define wrongful appropriation and how does it differ from larceny?",
+      "difficulty": "hard",
+      "category": "definition",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "121"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 121. Wrongful appropriation differs from larceny in that it lacks the intent to permanently deprive \u2014 only temporary use.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q030",
+      "query": "What are the elements of stalking under Article 130?",
+      "difficulty": "medium",
+      "category": "elements",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "130"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 130 stalking. Elements: course of conduct directed at a specific person causing reasonable fear.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q031",
+      "query": "What does mutiny mean under Article 94 of the UCMJ?",
+      "difficulty": "hard",
+      "category": "definition",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "94"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 94 mutiny or sedition. Mutiny means collective insubordination or concerted action to resist lawful military authority.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q032",
+      "query": "What must a prosecutor prove to secure a conviction for forgery under Article 105?",
+      "difficulty": "medium",
+      "category": "elements",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "105"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 105 forgery. Elements: false making or altering of a writing with apparent legal efficacy, with intent to defraud.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q033",
+      "query": "What is the maximum confinement for willfully disobeying a superior commissioned officer?",
+      "difficulty": "medium",
+      "category": "maximum_punishment",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "90"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 90 in peacetime: dishonorable discharge, forfeiture of all pay and allowances, confinement for 5 years.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q034",
+      "query": "Under Article 77, when is a person considered a principal to an offense?",
+      "difficulty": "hard",
+      "category": "definition",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "77"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 77 principals. Includes the actual perpetrator, aiders and abettors, and those who counsel or procure.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q035",
+      "query": "What does Article 114 say about endangering others?",
+      "difficulty": "easy",
+      "category": "article_lookup",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "114"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 114 endangerment offenses covers reckless endangerment and negligent discharge of a firearm.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q036",
+      "query": "How does the UCMJ address communicating threats under Article 115?",
+      "difficulty": "easy",
+      "category": "article_lookup",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "115"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 115 communicating threats. Covers communicated threats to injure a person, property, or reputation.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q037",
+      "query": "What offenses does Article 131b cover regarding obstruction of justice?",
+      "difficulty": "medium",
+      "category": "article_lookup",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "131b"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 131b obstructing justice. Covers wrongful acts intended to influence, impede, or otherwise obstruct administration of justice.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q038",
+      "query": "What is the UCMJ offense of retaliation and what article covers it?",
+      "difficulty": "medium",
+      "category": "article_lookup",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "132"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 132 retaliation. Taking adverse action against a member for reporting a crime or communicating with a member of Congress.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q039",
+      "query": "What is the offense of soliciting under Article 82?",
+      "difficulty": "medium",
+      "category": "elements",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "82"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 82 soliciting commission of offenses. Requires counseling, commanding, or otherwise inducing another to commit any offense under the UCMJ.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q040",
+      "query": "What conduct is covered under Article 93a regarding persons in positions of special trust?",
+      "difficulty": "hard",
+      "category": "article_lookup",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "93a"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 93a prohibited activities with military recruit or trainee by person in position of special trust.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q041",
+      "query": "What is the Coast Guard's policy on hazing?",
+      "difficulty": "easy",
+      "category": "policy_lookup",
+      "source_doc": "CG Conduct Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "3.A."
+        ],
+        "chunk_ids": [],
+        "notes": "Conduct Manual Chapter 3. Hazing is prohibited and defined as any conduct through which a person is physically or psychologically abused.",
+        "source_doc": "Conduct Manual"
+      }
+    },
+    {
+      "id": "q042",
+      "query": "How does the Conduct Manual define bullying?",
+      "difficulty": "easy",
+      "category": "definition",
+      "source_doc": "CG Conduct Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "3.B."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 3 defines bullying as deliberate or intentional behaviour intended to cause emotional distress to another.",
+        "source_doc": "Conduct Manual"
+      }
+    },
+    {
+      "id": "q043",
+      "query": "Can a commanding officer establish more stringent standards for relationships between members beyond what the Conduct Manual specifies?",
+      "difficulty": "medium",
+      "category": "policy_lookup",
+      "source_doc": "CG Conduct Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "2.A."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 2 interpersonal relationships. COs may impose additional restrictions based on unit-specific circumstances.",
+        "source_doc": "Conduct Manual"
+      }
+    },
+    {
+      "id": "q044",
+      "query": "What does the Conduct Manual say about officer-enlisted romantic relationships?",
+      "difficulty": "medium",
+      "category": "policy_lookup",
+      "source_doc": "CG Conduct Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "2.A."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 2. Officer-enlisted romantic relationships are generally prohibited as they undermine respect for authority.",
+        "source_doc": "Conduct Manual"
+      }
+    },
+    {
+      "id": "q045",
+      "query": "What actions must a commanding officer take when a member is arrested or detained by civilian authorities?",
+      "difficulty": "medium",
+      "category": "procedure",
+      "source_doc": "CG Conduct Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "1.B."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 1. Member must advise their commanding officer of the arrest. CO must take appropriate action.",
+        "source_doc": "Conduct Manual"
+      }
+    },
+    {
+      "id": "q046",
+      "query": "What is the Coast Guard's stance on extremist organizations and criminal gang activity?",
+      "difficulty": "medium",
+      "category": "policy_lookup",
+      "source_doc": "CG Conduct Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "1.D."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 1. Active participation in extremist organizations is prohibited. COs have authority to address such conduct.",
+        "source_doc": "Conduct Manual"
+      }
+    },
+    {
+      "id": "q047",
+      "query": "What does the Lautenberg Amendment mean for Coast Guard members who own firearms?",
+      "difficulty": "hard",
+      "category": "policy_lookup",
+      "source_doc": "CG Conduct Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "4."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 4. The Lautenberg Amendment prohibits persons convicted of misdemeanor crimes of domestic violence from possessing firearms.",
+        "source_doc": "Conduct Manual"
+      }
+    },
+    {
+      "id": "q048",
+      "query": "What is a Military Protective Order and when can it be issued?",
+      "difficulty": "medium",
+      "category": "definition",
+      "source_doc": "CG Conduct Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "5."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 5. MPOs are emergency protective orders issued by COs. They restrict contact between parties.",
+        "source_doc": "Conduct Manual"
+      }
+    },
+    {
+      "id": "q049",
+      "query": "How are absentees and deserters handled when they return to Coast Guard control?",
+      "difficulty": "medium",
+      "category": "procedure",
+      "source_doc": "CG Conduct Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "1.C."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 1. Detailed procedures for return of absentees and deserters including notification, processing, and legal disposition.",
+        "source_doc": "Conduct Manual"
+      }
+    },
+    {
+      "id": "q050",
+      "query": "Under the Conduct Manual, what obligation does a member have to support their dependents?",
+      "difficulty": "medium",
+      "category": "policy_lookup",
+      "source_doc": "CG Conduct Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "2.E."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 2. Members have a legal and moral obligation to support dependents. Failure can result in administrative or disciplinary action.",
+        "source_doc": "Conduct Manual"
+      }
+    },
+    {
+      "id": "q051",
+      "query": "What constitutes a prohibited relationship between a recruiter and a prospective member?",
+      "difficulty": "hard",
+      "category": "policy_lookup",
+      "source_doc": "CG Conduct Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "2.A."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 2. Recruiters are prohibited from establishing romantic or sexual relationships with prospective members.",
+        "source_doc": "Conduct Manual"
+      }
+    },
+    {
+      "id": "q052",
+      "query": "What is the purpose of the Code of Conduct for members of the armed forces?",
+      "difficulty": "easy",
+      "category": "policy_lookup",
+      "source_doc": "CG Conduct Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "1.A."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 1. The Code of Conduct provides a guide for behavior if captured. Oath of allegiance is the pivotal fact.",
+        "source_doc": "Conduct Manual"
+      }
+    },
+    {
+      "id": "q053",
+      "query": "What is a punitive letter of censure and who can receive one?",
+      "difficulty": "medium",
+      "category": "definition",
+      "source_doc": "CG Conduct Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "1.E."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 1. Punitive letters of censure are administrative sanctions. Enlisted members generally do not receive them \u2014 reserved for officers.",
+        "source_doc": "Conduct Manual"
+      }
+    },
+    {
+      "id": "q054",
+      "query": "What happens to a member's personal property when they go UA or desert?",
+      "difficulty": "medium",
+      "category": "procedure",
+      "source_doc": "CG Conduct Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "1.C.7.b.",
+          "1.C.7."
+        ],
+        "chunk_ids": [
+          "cgcm_ch01_0013"
+        ],
+        "notes": "Personal effects of UA/deserter held at unit. Specific chunk cgcm_ch01_0013 (1.C.7.b.). Parent section 1.C. does not exist as a stored section_number in CM.",
+        "source_doc": "Conduct Manual"
+      }
+    },
+    {
+      "id": "q055",
+      "query": "What is the Coast Guard's policy on civilian debt obligations for service members?",
+      "difficulty": "medium",
+      "category": "policy_lookup",
+      "source_doc": "CG Conduct Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "2.D."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 2. Members are obligated to pay their debts. Indebtedness may be evidence of unreliability and lead to administrative action.",
+        "source_doc": "Conduct Manual"
+      }
+    },
+    {
+      "id": "q056",
+      "query": "What type of hazing activities are explicitly prohibited in the Conduct Manual?",
+      "difficulty": "easy",
+      "category": "policy_lookup",
+      "source_doc": "CG Conduct Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "3.A.",
+          "3.B."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 3. Extensive list including striking, sleep deprivation, forced ingestion, placing foreign substances on another, threatening harm.",
+        "source_doc": "Conduct Manual"
+      }
+    },
+    {
+      "id": "q057",
+      "query": "What security clearance implications arise from a member's financial irresponsibility?",
+      "difficulty": "hard",
+      "category": "policy_lookup",
+      "source_doc": "CG Conduct Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "2.E."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 2. Chronic indebtedness may affect a member's eligibility for or retention of a security clearance.",
+        "source_doc": "Conduct Manual"
+      }
+    },
+    {
+      "id": "q058",
+      "query": "Under the Conduct Manual, what must a CO do when a member displays extremist or gang-related symbols?",
+      "difficulty": "hard",
+      "category": "procedure",
+      "source_doc": "CG Conduct Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "1.D."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 1. CO must take action including counseling, administrative action, or referral for disciplinary action.",
+        "source_doc": "Conduct Manual"
+      }
+    },
+    {
+      "id": "q059",
+      "query": "Can a no-contact order be issued even if no criminal charges have been filed?",
+      "difficulty": "medium",
+      "category": "policy_lookup",
+      "source_doc": "CG Conduct Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "5."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 5. Yes, MPOs are an emergency remedy and do not require pending criminal charges.",
+        "source_doc": "Conduct Manual"
+      }
+    },
+    {
+      "id": "q060",
+      "query": "How does the Conduct Manual address discrimination and equal opportunity?",
+      "difficulty": "medium",
+      "category": "policy_lookup",
+      "source_doc": "CG Conduct Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "2.B."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 2. Intentional discrimination is subject to disciplinary action. Unintentional discrimination warrants counseling.",
+        "source_doc": "Conduct Manual"
+      }
+    },
+    {
+      "id": "q061",
+      "query": "What incidents require a Coast Guard administrative investigation?",
+      "difficulty": "easy",
+      "category": "policy_lookup",
+      "source_doc": "CG Administrative Investigations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "A."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 2. Fires, explosions, collisions, groundings, material deficiencies, and other significant incidents requiring investigation.",
+        "source_doc": "Investigations Manual"
+      }
+    },
+    {
+      "id": "q062",
+      "query": "What are the three types of administrative investigations available under the Investigations Manual?",
+      "difficulty": "medium",
+      "category": "definition",
+      "source_doc": "CG Administrative Investigations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "A."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 3. Standard Investigation, Formal Investigation (Formal Board), and Court of Inquiry.",
+        "source_doc": "Investigations Manual"
+      }
+    },
+    {
+      "id": "q063",
+      "query": "What is a line of duty determination and when is it required?",
+      "difficulty": "medium",
+      "category": "definition",
+      "source_doc": "CG Administrative Investigations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "A.",
+          "B.",
+          "C."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 7. LOD determination required when a member is injured or dies to determine if the injury was in the line of duty and not due to misconduct.",
+        "source_doc": "Investigations Manual"
+      }
+    },
+    {
+      "id": "q064",
+      "query": "What is the difference between a standard investigation and a formal board of investigation?",
+      "difficulty": "medium",
+      "category": "definition",
+      "source_doc": "CG Administrative Investigations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "A."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 3. Formal boards require oath, have subpoena authority, and may substitute for an Article 32 hearing. Standard investigations are simpler.",
+        "source_doc": "Investigations Manual"
+      }
+    },
+    {
+      "id": "q065",
+      "query": "When must a Coast Guard investigation be coordinated with CGIS?",
+      "difficulty": "hard",
+      "category": "procedure",
+      "source_doc": "CG Administrative Investigations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "B."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 1. When a criminal investigation may be involved, command must notify CGIS and coordinate before taking administrative action.",
+        "source_doc": "Investigations Manual"
+      }
+    },
+    {
+      "id": "q066",
+      "query": "Who serves as the Final Action Authority for a Court of Inquiry?",
+      "difficulty": "hard",
+      "category": "procedure",
+      "source_doc": "CG Administrative Investigations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "A.",
+          "B."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 6. The Commandant is the Final Action Authority for Courts of Inquiry.",
+        "source_doc": "Investigations Manual"
+      }
+    },
+    {
+      "id": "q067",
+      "query": "What rights does a party have in a formal board of investigation?",
+      "difficulty": "hard",
+      "category": "policy_lookup",
+      "source_doc": "CG Administrative Investigations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "A.",
+          "B."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 10. Parties have the right to counsel, to present evidence, to cross-examine witnesses, and to make statements.",
+        "source_doc": "Investigations Manual"
+      }
+    },
+    {
+      "id": "q068",
+      "query": "What standard of proof applies to findings of fact in a standard investigation?",
+      "difficulty": "medium",
+      "category": "definition",
+      "source_doc": "CG Administrative Investigations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "C."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 4. Preponderance of the evidence \u2014 it is more likely than not that the finding is true.",
+        "source_doc": "Investigations Manual"
+      }
+    },
+    {
+      "id": "q069",
+      "query": "Does a misconduct finding in an LOD investigation automatically result in disciplinary action?",
+      "difficulty": "hard",
+      "category": "policy_lookup",
+      "source_doc": "CG Administrative Investigations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "F."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 7. No. The LOD/misconduct determination is separate from the disciplinary process and does not automatically trigger punishment.",
+        "source_doc": "Investigations Manual"
+      }
+    },
+    {
+      "id": "q070",
+      "query": "What type of investigation is required after a Coast Guard vessel collision or grounding?",
+      "difficulty": "medium",
+      "category": "procedure",
+      "source_doc": "CG Administrative Investigations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "A.",
+          "B."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 2. Collisions, groundings, and allisions generally require a formal administrative investigation.",
+        "source_doc": "Investigations Manual"
+      }
+    },
+    {
+      "id": "q071",
+      "query": "What specific facts must be documented in a vessel collision investigation?",
+      "difficulty": "hard",
+      "category": "procedure",
+      "source_doc": "CG Administrative Investigations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "C.",
+          "D."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 11. Weather, sea state, visibility, speeds, headings, radar contacts, communications, and other navigational data.",
+        "source_doc": "Investigations Manual"
+      }
+    },
+    {
+      "id": "q072",
+      "query": "When can an administrative investigation be used as an Article 32 pre-trial investigation?",
+      "difficulty": "hard",
+      "category": "procedure",
+      "source_doc": "CG Administrative Investigations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "E.",
+          "A."
+        ],
+        "chunk_ids": [
+          "cgim_ch10_0004"
+        ],
+        "notes": "Art.32 substitution content explicitly in Ch10 E. (Parties/Witnesses). Gold A. was correct source but wrong chapter section. Added chunk_id for precision.",
+        "source_doc": "Investigations Manual"
+      }
+    },
+    {
+      "id": "q073",
+      "query": "What is the purpose of a convening order and what must it contain?",
+      "difficulty": "medium",
+      "category": "definition",
+      "source_doc": "CG Administrative Investigations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "A.",
+          "B."
+        ],
+        "chunk_ids": [],
+        "notes": "Convening order purpose covered across Ch3 A. and B. Broadened from A. only.",
+        "source_doc": "Investigations Manual"
+      }
+    },
+    {
+      "id": "q074",
+      "query": "Who can a convening authority designate as an investigating officer?",
+      "difficulty": "medium",
+      "category": "procedure",
+      "source_doc": "CG Administrative Investigations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "A.",
+          "B."
+        ],
+        "chunk_ids": [],
+        "notes": "IO designation covered in Ch4 A./B. (Standard Investigation Procedures). Broadened.",
+        "source_doc": "Investigations Manual"
+      }
+    },
+    {
+      "id": "q075",
+      "query": "What is a Court of Inquiry and when is it used?",
+      "difficulty": "medium",
+      "category": "definition",
+      "source_doc": "CG Administrative Investigations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "A."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 9. The most formal type of administrative investigation. Used for the most significant incidents, particularly where subpoena authority is needed.",
+        "source_doc": "Investigations Manual"
+      }
+    },
+    {
+      "id": "q076",
+      "query": "Can findings from an administrative investigation be used in a court-martial?",
+      "difficulty": "hard",
+      "category": "policy_lookup",
+      "source_doc": "CG Administrative Investigations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "B.",
+          "D."
+        ],
+        "chunk_ids": [],
+        "notes": "Admissibility of investigation findings discussed in Ch1 B. (Purposes) and D. (Definitions/limitations). Previous gold B. was partially right.",
+        "source_doc": "Investigations Manual"
+      }
+    },
+    {
+      "id": "q077",
+      "query": "What information must be included in an investigative report?",
+      "difficulty": "medium",
+      "category": "procedure",
+      "source_doc": "CG Administrative Investigations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "A."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 5. The IR must identify findings of fact, opinions, and recommendations, and support all investigative purposes.",
+        "source_doc": "Investigations Manual"
+      }
+    },
+    {
+      "id": "q078",
+      "query": "What happens when an investigating officer believes a party should be redesignated?",
+      "difficulty": "hard",
+      "category": "procedure",
+      "source_doc": "CG Administrative Investigations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "B.",
+          "C."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 10. The IO must inform the Convening Authority who determines whether to redesignate, and notify the individual.",
+        "source_doc": "Investigations Manual"
+      }
+    },
+    {
+      "id": "q079",
+      "query": "Are there circumstances when an investigation is NOT required even after a significant event?",
+      "difficulty": "medium",
+      "category": "policy_lookup",
+      "source_doc": "CG Administrative Investigations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "C."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 2. Combat operations are excluded. Also when another investigative body already has jurisdiction.",
+        "source_doc": "Investigations Manual"
+      }
+    },
+    {
+      "id": "q080",
+      "query": "Who must be notified when a Coast Guard aircraft is involved in an accident?",
+      "difficulty": "medium",
+      "category": "procedure",
+      "source_doc": "CG Administrative Investigations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "A."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 11. Multiple notifications required including the NTSB, Commandant, and the Safety and Environmental Health office.",
+        "source_doc": "Investigations Manual"
+      }
+    },
+    {
+      "id": "q081",
+      "query": "How is an enlisted member separated for misconduct?",
+      "difficulty": "easy",
+      "category": "procedure",
+      "source_doc": "CG Military Separations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "Q."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 2. Misconduct separations require notification, opportunity to respond, and administrative processing per the Separations Manual.",
+        "source_doc": "Separations Manual"
+      }
+    },
+    {
+      "id": "q082",
+      "query": "What are the types of discharge characterizations available when separating a Coast Guard member?",
+      "difficulty": "medium",
+      "category": "definition",
+      "source_doc": "CG Military Separations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "B."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 2. Honorable, General (Under Honorable Conditions), Other Than Honorable (OTH), Bad Conduct, and Dishonorable.",
+        "source_doc": "Separations Manual"
+      }
+    },
+    {
+      "id": "q083",
+      "query": "Under what conditions can an officer be involuntarily separated from the Coast Guard?",
+      "difficulty": "medium",
+      "category": "procedure",
+      "source_doc": "CG Military Separations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "N.",
+          "P."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 1. Officers can be involuntarily separated for misconduct, unsatisfactory performance, failure to promote, or other cause.",
+        "source_doc": "Separations Manual"
+      }
+    },
+    {
+      "id": "q084",
+      "query": "What is High Year Tenure and how does it apply to enlisted members?",
+      "difficulty": "medium",
+      "category": "definition",
+      "source_doc": "CG Military Separations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "A.",
+          "B.",
+          "C."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 6. HYT establishes maximum time in service limits by pay grade to maintain a young and vigorous force.",
+        "source_doc": "Separations Manual"
+      }
+    },
+    {
+      "id": "q085",
+      "query": "What are the retirement eligibility requirements for active duty enlisted members?",
+      "difficulty": "medium",
+      "category": "policy_lookup",
+      "source_doc": "CG Military Separations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "A.",
+          "B."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 3. Generally 20 years of active service. Retirement pay calculation based on years of service and average base pay.",
+        "source_doc": "Separations Manual"
+      }
+    },
+    {
+      "id": "q086",
+      "query": "Can a member be separated due to a dependency or hardship and what does that process look like?",
+      "difficulty": "medium",
+      "category": "procedure",
+      "source_doc": "CG Military Separations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "A.",
+          "B."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 4. Members may request separation for dependency or hardship. Requires verification that hardship is genuine and not remediable by other means.",
+        "source_doc": "Separations Manual"
+      }
+    },
+    {
+      "id": "q087",
+      "query": "What is the process for an administrative separation board for enlisted members?",
+      "difficulty": "hard",
+      "category": "procedure",
+      "source_doc": "CG Military Separations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "P.",
+          "Q.",
+          "W."
+        ],
+        "chunk_ids": [],
+        "notes": "ASB process in Separations Manual. Sections P. (board procedures), Q. (misconduct separation), W. (administrative discharge board) all cover relevant content.",
+        "source_doc": "Separations Manual"
+      }
+    },
+    {
+      "id": "q088",
+      "query": "What are the grounds for separating a member as an unsatisfactory performer?",
+      "difficulty": "medium",
+      "category": "policy_lookup",
+      "source_doc": "CG Military Separations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "L."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 2. Documented pattern of poor performance, failure to meet military standards, or inability to advance.",
+        "source_doc": "Separations Manual"
+      }
+    },
+    {
+      "id": "q089",
+      "query": "When is a member entitled to an administrative separation board before discharge?",
+      "difficulty": "hard",
+      "category": "policy_lookup",
+      "source_doc": "CG Military Separations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "P.",
+          "Q.",
+          "W.",
+          "Y."
+        ],
+        "chunk_ids": [],
+        "notes": "ASB entitlement. W. covers admin separation board procedures including entitlement rules. P./Q. also relevant.",
+        "source_doc": "Separations Manual"
+      }
+    },
+    {
+      "id": "q090",
+      "query": "How is retirement pay calculated for a Reserve member who served 20 qualifying years?",
+      "difficulty": "hard",
+      "category": "policy_lookup",
+      "source_doc": "CG Military Separations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "J.",
+          "K."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 10. Non-regular retirement based on points system. Points converted to years of service equivalent.",
+        "source_doc": "Separations Manual"
+      }
+    },
+    {
+      "id": "q091",
+      "query": "What happens to separation pay if a member later receives VA disability compensation?",
+      "difficulty": "hard",
+      "category": "policy_lookup",
+      "source_doc": "CG Military Separations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "G.",
+          "H.",
+          "S.",
+          "T."
+        ],
+        "chunk_ids": [
+          "cgsep_ch06_0005",
+          "cgsep_ch06_0006"
+        ],
+        "notes": "VA disability offset of separation pay (10 U.S.C. \u00a7 1174(h)) is not explicitly in ingested corpus. Nearest content: Sep Manual Ch6 G./H. discusses sep pay recoupment after military retirement. Ch2 S. discusses recoupment of education costs. Accept Ch6 G./H. as best-available answer. True VA offset policy is out-of-corpus.",
+        "source_doc": "Separations Manual"
+      }
+    },
+    {
+      "id": "q092",
+      "query": "What discharge type does a member receive when separated following a court-martial conviction?",
+      "difficulty": "medium",
+      "category": "policy_lookup",
+      "source_doc": "CG Military Separations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "T.",
+          "X."
+        ],
+        "chunk_ids": [],
+        "notes": "Discharge adjudged by court-martial in Separations Manual. T. is primary, X. covers post-trial processing.",
+        "source_doc": "Separations Manual"
+      }
+    },
+    {
+      "id": "q093",
+      "query": "What is a Selective Early Retirement Board and what is its purpose?",
+      "difficulty": "medium",
+      "category": "definition",
+      "source_doc": "CG Military Separations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "A.",
+          "B."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 7. SECB reviews senior enlisted members for mandatory retirement when they exceed their pay grade progression limits.",
+        "source_doc": "Separations Manual"
+      }
+    },
+    {
+      "id": "q094",
+      "query": "Under what circumstances can a cadet be dismissed from the Coast Guard Academy?",
+      "difficulty": "medium",
+      "category": "policy_lookup",
+      "source_doc": "CG Military Separations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "A."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 1. The Superintendent may dismiss a cadet for misconduct, academic failure, or other cause.",
+        "source_doc": "Separations Manual"
+      }
+    },
+    {
+      "id": "q095",
+      "query": "Can an enlisted member separated under other than honorable conditions request a review?",
+      "difficulty": "medium",
+      "category": "procedure",
+      "source_doc": "CG Military Separations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "N.",
+          "LL."
+        ],
+        "chunk_ids": [],
+        "notes": "OTH discharge review. N. = notification/appeal procedures. LL. = administrative upgrade procedures.",
+        "source_doc": "Separations Manual"
+      }
+    },
+    {
+      "id": "q096",
+      "query": "What is a Second Chance Program and which members are eligible?",
+      "difficulty": "medium",
+      "category": "policy_lookup",
+      "source_doc": "CG Military Separations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "OO."
+        ],
+        "chunk_ids": [
+          "cgsep_ch02_0078"
+        ],
+        "notes": "Second Chance Program found in Sep Manual section OO. (confirmed by content inspection). Previous gold MM. was incorrect.",
+        "source_doc": "Separations Manual"
+      }
+    },
+    {
+      "id": "q097",
+      "query": "What protection does the Career Preservation Provision provide for victims of sexual assault facing separation?",
+      "difficulty": "hard",
+      "category": "policy_lookup",
+      "source_doc": "CG Military Separations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "QQ."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 2. Victims of sexual assault may request that their separation be delayed or reconsidered if the assault contributed to the basis for separation.",
+        "source_doc": "Separations Manual"
+      }
+    },
+    {
+      "id": "q098",
+      "query": "What is the procedure when an officer fails to be selected for promotion twice?",
+      "difficulty": "medium",
+      "category": "procedure",
+      "source_doc": "CG Military Separations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "L."
+        ],
+        "chunk_ids": [
+          "cgsep_ch01_0016",
+          "cgsep_ch01_0017"
+        ],
+        "notes": "Failure of selection for promotion twice is in Section L. (Ch1 Officers). Previous gold I. was Physical Examination \u2014 wrong section.",
+        "source_doc": "Separations Manual"
+      }
+    },
+    {
+      "id": "q099",
+      "query": "How does the Separations Manual define uncharacterized discharge?",
+      "difficulty": "medium",
+      "category": "definition",
+      "source_doc": "CG Military Separations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "BB."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 2. Entry-level separation for members who have served less than 180 days. Not characterized as honorable or otherwise.",
+        "source_doc": "Separations Manual"
+      }
+    },
+    {
+      "id": "q100",
+      "query": "What are the mandatory reporting requirements when separating members for misconduct involving sexual assault?",
+      "difficulty": "hard",
+      "category": "procedure",
+      "source_doc": "CG Military Separations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "Q.",
+          "R."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 2. Commands must follow specific notification and documentation requirements including victim notification and impact statements.",
+        "source_doc": "Separations Manual"
+      }
+    },
+    {
+      "id": "q101",
+      "query": "What is an alcohol incident under Coast Guard policy?",
+      "difficulty": "easy",
+      "category": "definition",
+      "source_doc": "CG Military Substance Abuse",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "D."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 3. An AI is behavior determined by preponderance of evidence in which alcohol was a contributing factor resulting in loss of ability to perform duties or a UCMJ violation.",
+        "source_doc": "Substance Abuse"
+      }
+    },
+    {
+      "id": "q102",
+      "query": "What happens after a member's first alcohol incident?",
+      "difficulty": "easy",
+      "category": "procedure",
+      "source_doc": "CG Military Substance Abuse",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "G."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 3. CO must counsel the member, document the AI, enroll the member in substance abuse education, and advise of consequences of a second AI.",
+        "source_doc": "Substance Abuse"
+      }
+    },
+    {
+      "id": "q103",
+      "query": "What are the separation consequences of a second alcohol incident?",
+      "difficulty": "medium",
+      "category": "policy_lookup",
+      "source_doc": "CG Military Substance Abuse",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "H."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 3. Commands must initiate administrative separation for a second AI. Officers: CO recommends separation. Enlisted: processed for separation.",
+        "source_doc": "Substance Abuse"
+      }
+    },
+    {
+      "id": "q104",
+      "query": "What is a drug incident and what conduct constitutes one?",
+      "difficulty": "easy",
+      "category": "definition",
+      "source_doc": "CG Military Substance Abuse",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "D."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 5. Any of several types of conduct determined by CO/OIC by preponderance of evidence: intentional use, wrongful possession, trafficking, civil/military conviction, etc.",
+        "source_doc": "Substance Abuse"
+      }
+    },
+    {
+      "id": "q105",
+      "query": "What must a commanding officer do immediately upon receiving a positive confirmed drug test result?",
+      "difficulty": "medium",
+      "category": "procedure",
+      "source_doc": "CG Military Substance Abuse",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "G."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 5. Must notify CGIS in consultation with servicing legal office and initiate appropriate investigation.",
+        "source_doc": "Substance Abuse"
+      }
+    },
+    {
+      "id": "q106",
+      "query": "What is the Coast Guard's policy on hemp and CBD products?",
+      "difficulty": "easy",
+      "category": "policy_lookup",
+      "source_doc": "CG Military Substance Abuse",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "A.",
+          "B.",
+          "C."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 7. All Coast Guard members are prohibited from using any hemp-containing products regardless of THC concentration.",
+        "source_doc": "Substance Abuse"
+      }
+    },
+    {
+      "id": "q107",
+      "query": "What are the rules regarding marijuana use for Coast Guard members in states where it is legal?",
+      "difficulty": "easy",
+      "category": "policy_lookup",
+      "source_doc": "CG Military Substance Abuse",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "B."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 7. Marijuana remains prohibited under federal law and the UCMJ regardless of state legalization.",
+        "source_doc": "Substance Abuse"
+      }
+    },
+    {
+      "id": "q108",
+      "query": "What is a prohibited substance under the Substance Abuse Manual and how does it differ from a controlled substance?",
+      "difficulty": "medium",
+      "category": "definition",
+      "source_doc": "CG Military Substance Abuse",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "B."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 6. A prohibited substance does not meet the legal definition of a controlled substance but is prohibited by Coast Guard policy. Includes hemp, synthetic cannabinoids, inhalants.",
+        "source_doc": "Substance Abuse"
+      }
+    },
+    {
+      "id": "q109",
+      "query": "How often must Coast Guard members be urinalysis tested?",
+      "difficulty": "easy",
+      "category": "policy_lookup",
+      "source_doc": "CG Military Substance Abuse",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "D."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 6. All active duty and drilling reservists must be randomly tested at minimum once annually. Units must test 25% of personnel quarterly.",
+        "source_doc": "Substance Abuse"
+      }
+    },
+    {
+      "id": "q110",
+      "query": "What is the process for a 'no drug incident' finding when a positive test is due to a prescription?",
+      "difficulty": "hard",
+      "category": "procedure",
+      "source_doc": "CG Military Substance Abuse",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "H."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 5. CO/OIC must verify prescription, obtain medical officer review, and document the no-drug incident finding in a memo.",
+        "source_doc": "Substance Abuse"
+      }
+    },
+    {
+      "id": "q111",
+      "query": "Can a member be found to have committed a drug incident without a positive drug test?",
+      "difficulty": "hard",
+      "category": "policy_lookup",
+      "source_doc": "CG Military Substance Abuse",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "G.",
+          "H."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 5. Yes. Absence of a positive test does not preclude a DI finding if preponderance of other evidence establishes drug use.",
+        "source_doc": "Substance Abuse"
+      }
+    },
+    {
+      "id": "q112",
+      "query": "What is a DUI as defined in the Substance Abuse Manual and what must a CO do when one occurs?",
+      "difficulty": "medium",
+      "category": "procedure",
+      "source_doc": "CG Military Substance Abuse",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "B.",
+          "E."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 4. DUI is drunken/impaired operation of a vehicle, aircraft, or vessel. CO must investigate, document, restrict driving privileges, and refer for medical screening.",
+        "source_doc": "Substance Abuse"
+      }
+    },
+    {
+      "id": "q113",
+      "query": "What is the minimum drinking age for Coast Guard members while on active duty?",
+      "difficulty": "easy",
+      "category": "policy_lookup",
+      "source_doc": "CG Military Substance Abuse",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "D."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 3. The Coast Guard's minimum drinking age is 21 for all military members in a duty status regardless of location.",
+        "source_doc": "Substance Abuse"
+      }
+    },
+    {
+      "id": "q114",
+      "query": "What is Hair Specimen Testing and when can it be used?",
+      "difficulty": "medium",
+      "category": "definition",
+      "source_doc": "CG Military Substance Abuse",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "F."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 6. HST is an authorized additional drug testing method that can detect substances over a longer time window than urinalysis.",
+        "source_doc": "Substance Abuse"
+      }
+    },
+    {
+      "id": "q115",
+      "query": "What happens to a member's driving privileges on a Coast Guard installation after a DUI?",
+      "difficulty": "medium",
+      "category": "procedure",
+      "source_doc": "CG Military Substance Abuse",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "C."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 4. Commands can restrict installation driving privileges for up to one year for a first offense.",
+        "source_doc": "Substance Abuse"
+      }
+    },
+    {
+      "id": "q116",
+      "query": "What is the policy on drug paraphernalia possession for Coast Guard members?",
+      "difficulty": "easy",
+      "category": "policy_lookup",
+      "source_doc": "CG Military Substance Abuse",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "B.",
+          "C."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 8. Members are prohibited from wrongfully using, possessing, or manufacturing drug paraphernalia. Violations constitute a DI.",
+        "source_doc": "Substance Abuse"
+      }
+    },
+    {
+      "id": "q117",
+      "query": "How is gambling disorder addressed under Coast Guard policy?",
+      "difficulty": "medium",
+      "category": "policy_lookup",
+      "source_doc": "CG Military Substance Abuse",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "A."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 9. Gambling Disorder is treated as a behavioral addiction medically equivalent to alcohol or drug addiction. COs should refer members for evaluation.",
+        "source_doc": "Substance Abuse"
+      }
+    },
+    {
+      "id": "q118",
+      "query": "What is Oral Fluid Testing and how does it differ from urinalysis?",
+      "difficulty": "medium",
+      "category": "definition",
+      "source_doc": "CG Military Substance Abuse",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "F."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 6. OFT uses saliva samples instead of urine. Detects more recent substance use. Authorized additional testing method.",
+        "source_doc": "Substance Abuse"
+      }
+    },
+    {
+      "id": "q119",
+      "query": "Can a member who tests positive for marijuana still be retained in the Coast Guard?",
+      "difficulty": "hard",
+      "category": "policy_lookup",
+      "source_doc": "CG Military Substance Abuse",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "H.",
+          "I."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 5. After a drug incident finding the member must be processed for separation, but commanding officers can in rare cases recommend retention.",
+        "source_doc": "Substance Abuse"
+      }
+    },
+    {
+      "id": "q120",
+      "query": "What is the BAC threshold that establishes a DUI by preponderance of evidence under Coast Guard policy?",
+      "difficulty": "medium",
+      "category": "policy_lookup",
+      "source_doc": "CG Military Substance Abuse",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "B."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 4. A BAC of .08% or higher alone can establish DUI by preponderance of evidence if the member voluntarily consumed alcohol.",
+        "source_doc": "Substance Abuse"
+      }
+    },
+    {
+      "id": "q121",
+      "query": "What are the grounds for separating a member for drug abuse and what document governs it?",
+      "difficulty": "medium",
+      "category": "cross_document",
+      "source_doc": "CG Military Separations Manual + CG Military Substance Abuse",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "Q."
+        ],
+        "chunk_ids": [],
+        "notes": "Drug abuse separation grounds in Sep Manual Ch2 Q. (Misconduct). Previous gold D. was Resignations \u2014 wrong section. Cross-doc gold removed.",
+        "source_doc": "Separations Manual"
+      }
+    },
+    {
+      "id": "q122",
+      "query": "If a member commits a UCMJ violation related to drug use, can they face both criminal charges and administrative separation?",
+      "difficulty": "hard",
+      "category": "cross_document",
+      "source_doc": "MCM 2024 + CG Military Substance Abuse",
+      "gold": {
+        "article_numbers": [
+          "112a"
+        ],
+        "section_numbers": [
+          "H.",
+          "D."
+        ],
+        "chunk_ids": [
+          "mcm2024_112a_000",
+          "cgsa_ch05_0004",
+          "cgsa_ch06_0011"
+        ],
+        "notes": "Dual UCMJ + admin sep for drug violations covered in MCM Art.112a (criminal elements) AND SA Manual Ch5 H. / Ch6 D. (legal rights, admin consequences). Cross-doc: either source is a valid answer to the \"can they face both?\" question.",
+        "source_doc": null
+      }
+    },
+    {
+      "id": "q123",
+      "query": "What role does a CO's investigation play before making a drug incident determination?",
+      "difficulty": "hard",
+      "category": "cross_document",
+      "source_doc": "CG Military Substance Abuse + CG Administrative Investigations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "G.",
+          "H."
+        ],
+        "chunk_ids": [],
+        "notes": "Substance Abuse Manual Ch.5 requires CO to investigate in conjunction with CGIS. AIM governs how investigation is conducted.",
+        "source_doc": "Investigations Manual"
+      }
+    },
+    {
+      "id": "q124",
+      "query": "Under what article of the UCMJ can a member be punished for wearing an unauthorized medal or badge?",
+      "difficulty": "medium",
+      "category": "article_lookup",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "106a"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 106a wearing unauthorized insignia, medal, decoration, badge, ribbon, device, or lapel button.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q125",
+      "query": "Can hazing constitute a UCMJ offense and if so under what article?",
+      "difficulty": "medium",
+      "category": "cross_document",
+      "source_doc": "CG Conduct Manual + MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "93"
+        ],
+        "section_numbers": [
+          "3.A."
+        ],
+        "chunk_ids": [],
+        "notes": "Conduct Manual Ch.3 prohibits hazing. MCM Article 93 cruelty and maltreatment and Article 128 assault may also apply depending on conduct.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q126",
+      "query": "What is the relationship between an alcohol incident determination and a DUI charge under the UCMJ?",
+      "difficulty": "hard",
+      "category": "cross_document",
+      "source_doc": "CG Military Substance Abuse + MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "113"
+        ],
+        "section_numbers": [
+          "B."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 4 SA Manual. A DUI is treated as a separate alcohol incident. DUI may also be charged under Article 113 UCMJ.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q127",
+      "query": "If a member commits domestic violence, what policy documents and UCMJ articles could apply?",
+      "difficulty": "hard",
+      "category": "cross_document",
+      "source_doc": "CG Conduct Manual + MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "128b"
+        ],
+        "section_numbers": [
+          "5."
+        ],
+        "chunk_ids": [],
+        "notes": "MCM Article 128b domestic violence. Conduct Manual Ch.5 MPOs. Separations Manual may also apply for discharge.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q128",
+      "query": "What is an impaired driving offense under Article 113 and how does it relate to the Substance Abuse Manual DUI policy?",
+      "difficulty": "hard",
+      "category": "cross_document",
+      "source_doc": "MCM 2024 + CG Military Substance Abuse",
+      "gold": {
+        "article_numbers": [
+          "113"
+        ],
+        "section_numbers": [
+          "B."
+        ],
+        "chunk_ids": [],
+        "notes": "Article 113 covers criminal offense. Substance Abuse Manual Ch.4 covers administrative consequences including separation and driving restrictions.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q129",
+      "query": "When a member is separated following a court-martial conviction, which document governs the discharge process?",
+      "difficulty": "medium",
+      "category": "cross_document",
+      "source_doc": "MCM 2024 + CG Military Separations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "T.",
+          "X."
+        ],
+        "chunk_ids": [],
+        "notes": "Discharge following court-martial governed by Sep Manual Ch2 T. and X. Previous source_doc was set to MCM 2024 \u2014 incorrect. Fixed to Separations Manual.",
+        "source_doc": "Separations Manual"
+      }
+    },
+    {
+      "id": "q130",
+      "query": "What is the standard of evidence used when a CO makes an alcohol incident or drug incident finding?",
+      "difficulty": "medium",
+      "category": "cross_document",
+      "source_doc": "CG Military Substance Abuse + CG Administrative Investigations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "D.",
+          "G.",
+          "H."
+        ],
+        "chunk_ids": [],
+        "notes": "Both documents use the preponderance of the evidence standard \u2014 more likely than not that the incident occurred.",
+        "source_doc": "Investigations Manual"
+      }
+    },
+    {
+      "id": "q131",
+      "query": "What is Article 87a and what offenses does it cover?",
+      "difficulty": "medium",
+      "category": "article_lookup",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "87a"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 87a resistance, flight, breach of arrest, and escape from custody.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q132",
+      "query": "What is arson under Article 126 and how does it differ from burning property with intent to defraud?",
+      "difficulty": "medium",
+      "category": "elements",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "126"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 126. Arson involves burning an inhabited dwelling or other structure. Burning with intent to defraud involves insurance fraud or similar motive.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q133",
+      "query": "What does Article 108 say about military property \u2014 loss, damage, or destruction?",
+      "difficulty": "easy",
+      "category": "article_lookup",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "108"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 108 military property loss, damage, destruction, disposition. Covers both through neglect and through design.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q134",
+      "query": "What does it mean to 'improperly hazard a vessel' under Article 110?",
+      "difficulty": "medium",
+      "category": "elements",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "110"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 110 willfully and wrongfully hazarding a vessel or aircraft. Requires willful act that places the vessel or aircraft at risk.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q135",
+      "query": "What is espionage under Article 103a and what is the maximum punishment?",
+      "difficulty": "hard",
+      "category": "maximum_punishment",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "103a"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 103a espionage. Maximum punishment is death or life imprisonment.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q136",
+      "query": "What are the elements of kidnapping under Article 125?",
+      "difficulty": "medium",
+      "category": "elements",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "125"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 125 kidnapping. Elements: seizing, confining, or otherwise holding a person against their will.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q137",
+      "query": "What is maiming under Article 128a?",
+      "difficulty": "medium",
+      "category": "definition",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "128a"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 128a maiming. Intentionally inflicting injury that causes permanent disfigurement or destroys or disables an organ or limb.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q138",
+      "query": "Under Article 131g, what constitutes wrongful interference with an adverse administrative proceeding?",
+      "difficulty": "hard",
+      "category": "elements",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "131g"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 131g wrongful interference with adverse administrative proceeding. Covers attempts to impede or influence an administrative action against oneself or another.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q139",
+      "query": "What does Article 104a say about fraudulent enlistment or appointment?",
+      "difficulty": "medium",
+      "category": "article_lookup",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "104a"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 104a fraudulent enlistment, appointment, or separation. Covers procuring enlistment through deliberate material misrepresentation.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q140",
+      "query": "What is the offense of wrongful broadcast or publication under Article 117a?",
+      "difficulty": "medium",
+      "category": "article_lookup",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "117a"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 117a wrongful broadcast or publication of intimate visual images without consent.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q141",
+      "query": "What is the maximum punishment for unauthorized absence of more than 30 days?",
+      "difficulty": "medium",
+      "category": "maximum_punishment",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "86"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 86. UA of more than 30 days carries higher maximum punishment than shorter periods.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q142",
+      "query": "What types of government computer offenses are covered under Article 123?",
+      "difficulty": "medium",
+      "category": "article_lookup",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "123"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 123 offenses concerning government computers. Covers unauthorized access, damaging, and misuse of government computer systems.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q143",
+      "query": "What is bribery under Article 124a and who can be charged?",
+      "difficulty": "medium",
+      "category": "elements",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "124a"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 124a bribery. Giving or offering anything of value to a public official with intent to influence an official act.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q144",
+      "query": "What does Article 116 say about riot and breach of peace?",
+      "difficulty": "easy",
+      "category": "article_lookup",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "116"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 116 riot or breach of peace. Riot requires multiple persons acting with a common purpose using force or threat of force.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q145",
+      "query": "How is manslaughter defined under Article 119 and what are its two types?",
+      "difficulty": "medium",
+      "category": "definition",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "119"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 119 manslaughter. Voluntary manslaughter: upon a sudden quarrel. Involuntary: through culpable negligence.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q146",
+      "query": "What is the Conduct Manual's guidance on off-limits locations?",
+      "difficulty": "medium",
+      "category": "policy_lookup",
+      "source_doc": "CG Conduct Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "1.D."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 1. Commands shall maintain a listing of off-limits locations and ensure members are aware of them.",
+        "source_doc": "Conduct Manual"
+      }
+    },
+    {
+      "id": "q147",
+      "query": "What guidance does the Conduct Manual provide for commands regarding servicemembers' organizations?",
+      "difficulty": "hard",
+      "category": "policy_lookup",
+      "source_doc": "CG Conduct Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "1.D."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 1. COs must be aware of membership in organizations that are illegal or whose activities are incompatible with military service.",
+        "source_doc": "Conduct Manual"
+      }
+    },
+    {
+      "id": "q148",
+      "query": "How does the Separations Manual define 'misconduct' as a basis for separation?",
+      "difficulty": "medium",
+      "category": "definition",
+      "source_doc": "CG Military Separations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "Q."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 2. Misconduct includes minor disciplinary infractions, patterns of misconduct, commission of a serious offense, or drug abuse.",
+        "source_doc": "Separations Manual"
+      }
+    },
+    {
+      "id": "q149",
+      "query": "What is the difference between an honorable discharge and a general discharge?",
+      "difficulty": "easy",
+      "category": "definition",
+      "source_doc": "CG Military Separations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "B."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 2. Honorable: full military duties performed satisfactorily. General (under honorable conditions): service was honest and faithful but not fully satisfactory.",
+        "source_doc": "Separations Manual"
+      }
+    },
+    {
+      "id": "q150",
+      "query": "What are the Coast Guard's Core Values and how are they referenced in policy documents?",
+      "difficulty": "easy",
+      "category": "policy_lookup",
+      "source_doc": "CG Conduct Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "2.A."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 2. Honor, Respect, and Devotion to Duty. Referenced as the foundation of the Conduct Manual's interpersonal relationship policies.",
+        "source_doc": "Conduct Manual"
+      }
+    },
+    {
+      "id": "q151",
+      "query": "Under what article of the UCMJ can someone be charged for contempt toward the President or Congress?",
+      "difficulty": "hard",
+      "category": "article_lookup",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "88"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 88 contempt toward officials. Covers using contemptuous words against the President, VP, Secretary of Defense, and others.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q152",
+      "query": "What is a breach of medical quarantine under Article 84?",
+      "difficulty": "medium",
+      "category": "definition",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "84"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 84. Knowingly violating a lawfully imposed quarantine order issued by a quarantine authority.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q153",
+      "query": "What does Article 98 say about misconduct as a prisoner?",
+      "difficulty": "medium",
+      "category": "article_lookup",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "98"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 98 misconduct as prisoner. Covers collaboration with enemy, providing aid or comfort, or accepting favors from the enemy.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q154",
+      "query": "What is the legal significance of a 'lawful general order' in the Coast Guard context?",
+      "difficulty": "hard",
+      "category": "definition",
+      "source_doc": "CG Military Substance Abuse",
+      "gold": {
+        "article_numbers": [
+          "92"
+        ],
+        "section_numbers": [
+          "C."
+        ],
+        "chunk_ids": [],
+        "notes": "Substance Abuse Manual Ch.7. Hemp and marijuana prohibitions constitute lawful general orders. Violation is punishable under Article 92 UCMJ.",
+        "source_doc": "Substance Abuse"
+      }
+    },
+    {
+      "id": "q155",
+      "query": "What is the Drug Testing Coordinator and what are their primary responsibilities?",
+      "difficulty": "medium",
+      "category": "definition",
+      "source_doc": "CG Military Substance Abuse",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "C."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 6. DTC is responsible for managing the unit's drug testing program including administration, training, and specimen collection oversight.",
+        "source_doc": "Substance Abuse"
+      }
+    },
+    {
+      "id": "q156",
+      "query": "What must a member do if they witness another member displaying signs of hazing?",
+      "difficulty": "medium",
+      "category": "procedure",
+      "source_doc": "CG Conduct Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "3.A.",
+          "3.B."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 3. Members have an obligation to report hazing. The Conduct Manual establishes anti-harassment and hate incident reporting procedures.",
+        "source_doc": "Conduct Manual"
+      }
+    },
+    {
+      "id": "q157",
+      "query": "What is a formal board of investigation and how does it differ from a standard investigation?",
+      "difficulty": "medium",
+      "category": "definition",
+      "source_doc": "CG Administrative Investigations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "A.",
+          "B."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 8. A formal board has multiple members, full subpoena authority, sworn testimony, and more extensive rights for parties.",
+        "source_doc": "Investigations Manual"
+      }
+    },
+    {
+      "id": "q158",
+      "query": "What is the purpose of the preponderance of evidence standard in military administrative proceedings?",
+      "difficulty": "medium",
+      "category": "definition",
+      "source_doc": "CG Administrative Investigations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "C."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 4. It is a lower standard than beyond a reasonable doubt and means that a fact is more likely true than not.",
+        "source_doc": "Investigations Manual"
+      }
+    },
+    {
+      "id": "q159",
+      "query": "What are the consequences of a member knowingly tampering with a drug test specimen?",
+      "difficulty": "hard",
+      "category": "policy_lookup",
+      "source_doc": "CG Military Substance Abuse",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "E."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 6. Tampering may constitute a DI and a UCMJ violation. Both the original and new specimen are sent to the lab.",
+        "source_doc": "Substance Abuse"
+      }
+    },
+    {
+      "id": "q160",
+      "query": "What happens if a member refuses to submit a urine specimen during a drug test?",
+      "difficulty": "medium",
+      "category": "procedure",
+      "source_doc": "CG Military Substance Abuse",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "D."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 6. Refusal is a violation of a lawful order, constitutes a DI, and may result in court-martial and separation.",
+        "source_doc": "Substance Abuse"
+      }
+    },
+    {
+      "id": "q161",
+      "query": "What does 'accessory after the fact' mean under Article 78?",
+      "difficulty": "medium",
+      "category": "definition",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "78"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 78. Knowing an offense was committed, receiving, relieving, comforting, or assisting the offender to hinder punishment.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q162",
+      "query": "How is the charge of leaving the scene of a vehicle accident handled under the UCMJ?",
+      "difficulty": "medium",
+      "category": "article_lookup",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "111"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 111 leaving scene of vehicle accident.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q163",
+      "query": "What is 'misbehavior before the enemy' under Article 99?",
+      "difficulty": "hard",
+      "category": "article_lookup",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "99"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 99. Running away, shamefully abandoning a command, casting away arms, or failing to do utmost to encounter the enemy.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q164",
+      "query": "What types of records are covered under Article 104 public records offenses?",
+      "difficulty": "medium",
+      "category": "article_lookup",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "104"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 104. Willfully and unlawfully concealing, removing, mutilating, obliterating, or destroying public records.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q165",
+      "query": "What constitutes subornation of perjury under Article 131a?",
+      "difficulty": "hard",
+      "category": "elements",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "131a"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 131a. Inducing another to commit perjury by any means including persuasion, bribery, or coercion.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q166",
+      "query": "What are the elements needed to prove someone is guilty of graft under Article 124b?",
+      "difficulty": "hard",
+      "category": "elements",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "124b"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 124b graft. Public official asking for or receiving compensation in exchange for advice or assistance in a contracting matter.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q167",
+      "query": "What conduct constitutes disrespect toward a superior commissioned officer under Article 89?",
+      "difficulty": "medium",
+      "category": "elements",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "89"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 89. Using disrespectful words or gestures toward a superior commissioned officer while that officer is in execution of office.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q168",
+      "query": "What does Article 96 say about releasing a prisoner without proper authority?",
+      "difficulty": "medium",
+      "category": "article_lookup",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "96"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 96. Releasing a prisoner without authority from anyone empowered to do so.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q169",
+      "query": "What is the offense of wrongful refusal to testify under Article 131d?",
+      "difficulty": "medium",
+      "category": "elements",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "131d"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 131d. Refusing to take an oath or affirmation or refusing to answer lawful questions in a proceeding.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q170",
+      "query": "What does Article 130 say about the elements required for a stalking conviction?",
+      "difficulty": "hard",
+      "category": "elements",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "130"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 130. Course of conduct directed at a specific person that causes reasonable fear of death, bodily harm, or sexual assault.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q171",
+      "query": "How do you determine whether an injury to a reservist is in the line of duty?",
+      "difficulty": "hard",
+      "category": "procedure",
+      "source_doc": "CG Administrative Investigations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "A.",
+          "B.",
+          "C."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 7. A different analysis applies for reservists. LOD determination depends on whether they were performing inactive duty training.",
+        "source_doc": "Investigations Manual"
+      }
+    },
+    {
+      "id": "q172",
+      "query": "What is the military magistrate's role in the Coast Guard?",
+      "difficulty": "hard",
+      "category": "definition",
+      "source_doc": "CG Conduct Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "1.F."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 1. Military magistrates conduct pretrial confinement reviews and other judicial functions.",
+        "source_doc": "Conduct Manual"
+      }
+    },
+    {
+      "id": "q173",
+      "query": "What documentation is required when a member is confined pending trial?",
+      "difficulty": "hard",
+      "category": "procedure",
+      "source_doc": "CG Conduct Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "1.F."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 1. Confinement order required, and member's command must be notified. Pretrial confinement process includes specific documentation.",
+        "source_doc": "Conduct Manual"
+      }
+    },
+    {
+      "id": "q174",
+      "query": "What are the restrictions on recruiting personnel establishing personal relationships with applicants?",
+      "difficulty": "medium",
+      "category": "policy_lookup",
+      "source_doc": "CG Conduct Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "2.A."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 2. Recruiters are prohibited from romantic or sexual relationships with prospective members. Home visits for other than official business are also prohibited.",
+        "source_doc": "Conduct Manual"
+      }
+    },
+    {
+      "id": "q175",
+      "query": "What is an unsuitability discharge and what are its common bases?",
+      "difficulty": "medium",
+      "category": "definition",
+      "source_doc": "CG Military Separations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "N.",
+          "O."
+        ],
+        "chunk_ids": [],
+        "notes": "Unsuitability for enlisted in N./O. sections of Ch2. Previous gold M. is \"Minority/Under Age\" discharge - wrong section entirely.",
+        "source_doc": "Separations Manual"
+      }
+    },
+    {
+      "id": "q176",
+      "query": "What is Article 131c misprision of a serious offense?",
+      "difficulty": "hard",
+      "category": "definition",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "131c"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 131c. Knowing an offense has been committed and concealing it by taking an affirmative act to conceal.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q177",
+      "query": "Under Article 119b, what child abuse offenses are covered?",
+      "difficulty": "hard",
+      "category": "article_lookup",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "119b"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 119b. Intentional abuse or assault of a child under 16 by a person of duty or care.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q178",
+      "query": "What is the Substance Use Disorder-Severe classification and how does it affect separation processing?",
+      "difficulty": "hard",
+      "category": "definition",
+      "source_doc": "CG Military Substance Abuse",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "D.",
+          "H."
+        ],
+        "chunk_ids": [],
+        "notes": "Substance Use Disorder-Severe classification discussed in SA Ch5 D. (Drug Incident) and H. Previous gold C. was Driving Privileges \u2014 wrong chapter.",
+        "source_doc": "Substance Abuse"
+      }
+    },
+    {
+      "id": "q179",
+      "query": "What does it mean for a Court of Inquiry to have subpoena authority?",
+      "difficulty": "medium",
+      "category": "definition",
+      "source_doc": "CG Administrative Investigations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "B."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 9. The Court of Inquiry can compel civilian witnesses to appear and produce evidence under authority of 10 U.S.C. \u00a7 847.",
+        "source_doc": "Investigations Manual"
+      }
+    },
+    {
+      "id": "q180",
+      "query": "How is fraudulent use of credit cards addressed under the UCMJ?",
+      "difficulty": "medium",
+      "category": "article_lookup",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "121a"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 121a fraudulent use of credit cards, debit cards, or other access devices.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q181",
+      "query": "What is the anti-harassment and hate incident procedure and when does it apply?",
+      "difficulty": "medium",
+      "category": "procedure",
+      "source_doc": "CG Conduct Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "3.C."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 3. The AHHI procedure provides a formal reporting and resolution mechanism for harassment and hate incidents.",
+        "source_doc": "Conduct Manual"
+      }
+    },
+    {
+      "id": "q182",
+      "query": "When is a member entitled to counsel during an administrative separation process?",
+      "difficulty": "hard",
+      "category": "policy_lookup",
+      "source_doc": "CG Military Separations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "Q.",
+          "I.",
+          "X."
+        ],
+        "chunk_ids": [],
+        "notes": "Right to counsel during admin separation discussed in Ch2 Q. (Misconduct/ASB), I. (Unsatisfactory performers - opportunity to consult), and X. (Waivers). Broadened from P./Q.",
+        "source_doc": "Separations Manual"
+      }
+    },
+    {
+      "id": "q183",
+      "query": "What is an Article 31 rights warning and when must it be given?",
+      "difficulty": "medium",
+      "category": "definition",
+      "source_doc": "CG Military Substance Abuse",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "F.",
+          "G.",
+          "H."
+        ],
+        "chunk_ids": [
+          "cgim_ch10_0008",
+          "cgim_ch10_0006"
+        ],
+        "notes": "Article 31(b) rights warning discussed in both AIM (Ch10 F./G. - party rights during investigations) and SA Manual (Ch5 H./G. - DI legal rights). Gold broadened to cross-doc since question is general not drug-specific. Added AIM chunk_ids as primary answers.",
+        "source_doc": null
+      }
+    },
+    {
+      "id": "q184",
+      "query": "What reporting requirements exist when a member is convicted in civilian court?",
+      "difficulty": "medium",
+      "category": "procedure",
+      "source_doc": "CG Conduct Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "1.B.3.b.",
+          "1.B.5.b.",
+          "1.B."
+        ],
+        "chunk_ids": [
+          "cgcm_ch01_0003",
+          "cgcm_ch01_0004"
+        ],
+        "notes": "Civil arrest reporting in CM section 1.B.3.b. (member must advise CO) and 1.B.5.b. (conviction reporting form). Added specific chunk_ids.",
+        "source_doc": "Conduct Manual"
+      }
+    },
+    {
+      "id": "q185",
+      "query": "What is the difference between an approved and unexecuted punitive discharge?",
+      "difficulty": "hard",
+      "category": "definition",
+      "source_doc": "CG Military Separations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "T."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 2. Approved but unexecuted means the discharge has been adjudged and approved by the convening authority but not yet carried out pending appellate review.",
+        "source_doc": "Separations Manual"
+      }
+    },
+    {
+      "id": "q186",
+      "query": "What is the Coast Guard's policy on random drug testing of recruits and cadets?",
+      "difficulty": "medium",
+      "category": "policy_lookup",
+      "source_doc": "CG Military Substance Abuse",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "D."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 6. Recruits, cadets, officer candidates, and DCOs must be tested within 72 hours of reporting to a training facility.",
+        "source_doc": "Substance Abuse"
+      }
+    },
+    {
+      "id": "q187",
+      "query": "What is the Sanctuary provision and how does it protect long-serving reservists?",
+      "difficulty": "hard",
+      "category": "policy_lookup",
+      "source_doc": "CG Military Separations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "H."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 10. Sanctuary protects reservists with 18-20 years of qualifying service from involuntary separation before reaching retirement eligibility.",
+        "source_doc": "Separations Manual"
+      }
+    },
+    {
+      "id": "q188",
+      "query": "What are the rights of a crime victim during a Coast Guard administrative investigation?",
+      "difficulty": "hard",
+      "category": "policy_lookup",
+      "source_doc": "CG Administrative Investigations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "C."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 10. Victims may be designated as parties with associated rights, or receive notification and have limited participation in proceedings.",
+        "source_doc": "Investigations Manual"
+      }
+    },
+    {
+      "id": "q189",
+      "query": "Under what circumstances can a convening authority dismiss an investigation after receiving a letter incident report?",
+      "difficulty": "hard",
+      "category": "procedure",
+      "source_doc": "CG Administrative Investigations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "D.",
+          "C."
+        ],
+        "chunk_ids": [
+          "cgim_ch06_0002"
+        ],
+        "notes": "CA authority to close after LIR explicitly in Ch6 D. (Convening Authority responsibilities). Previous gold A. was too broad (matched all AIM A. sections). Added chunk_id for precision. Ch6 C. also relevant.",
+        "source_doc": "Investigations Manual"
+      }
+    },
+    {
+      "id": "q190",
+      "query": "What is a parole violation under Article 107a of the UCMJ?",
+      "difficulty": "medium",
+      "category": "article_lookup",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "107a"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 107a parole violation. Knowingly and intentionally violating the terms of parole imposed in connection with a court-martial sentence.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q191",
+      "query": "What are the rights of members accused of a UCMJ violation during questioning?",
+      "difficulty": "medium",
+      "category": "policy_lookup",
+      "source_doc": "CG Military Substance Abuse",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "G."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 5. Members must be advised of Article 31(b) rights before any questioning regarding suspected drug incidents.",
+        "source_doc": "Substance Abuse"
+      }
+    },
+    {
+      "id": "q192",
+      "query": "What is the difference between a bad conduct discharge and a dishonorable discharge?",
+      "difficulty": "medium",
+      "category": "definition",
+      "source_doc": "CG Military Separations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "B."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 2. BCD can be adjudged by a special or general court-martial. Dishonorable can only be adjudged by a general court-martial for serious offenses.",
+        "source_doc": "Separations Manual"
+      }
+    },
+    {
+      "id": "q193",
+      "query": "What is the process when a member wants to voluntarily separate in lieu of facing an involuntary board action?",
+      "difficulty": "hard",
+      "category": "procedure",
+      "source_doc": "CG Military Separations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "V.",
+          "U.",
+          "W.",
+          "NN."
+        ],
+        "chunk_ids": [],
+        "notes": "Voluntary separation in lieu of orders process covered across multiple Sep Manual sections. U. (requests), V. (disposition), W. (ASB procedures), NN. (SILO). Top5 returns U./W. which are legitimate related sections. Broadened.",
+        "source_doc": "Separations Manual"
+      }
+    },
+    {
+      "id": "q194",
+      "query": "What does the Investigations Manual say about sharing investigation findings with other federal agencies?",
+      "difficulty": "hard",
+      "category": "policy_lookup",
+      "source_doc": "CG Administrative Investigations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "B.",
+          "C."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 1. Information sharing outside the Coast Guard is controlled. Privacy Act and other restrictions apply.",
+        "source_doc": "Investigations Manual"
+      }
+    },
+    {
+      "id": "q195",
+      "query": "What is the Conduct Manual's guidance on how commands should handle an 'underground newspaper' published by members?",
+      "difficulty": "hard",
+      "category": "policy_lookup",
+      "source_doc": "CG Conduct Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "1.D."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 1. Commands must balance free expression with military good order. Distribution of materials undermining morale may be restricted.",
+        "source_doc": "Conduct Manual"
+      }
+    },
+    {
+      "id": "q196",
+      "query": "What must occur before a member's security clearance can be revoked or denied due to financial problems?",
+      "difficulty": "hard",
+      "category": "procedure",
+      "source_doc": "CG Conduct Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "2.E."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 2. The member must be notified, given an opportunity to respond, and the record reviewed before security clearance action.",
+        "source_doc": "Conduct Manual"
+      }
+    },
+    {
+      "id": "q197",
+      "query": "What does Article 120c cover regarding other sexual misconduct?",
+      "difficulty": "hard",
+      "category": "article_lookup",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "120c"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 120c other sexual misconduct. Covers indecent viewing, visual recording, or broadcasting of private areas without consent.",
+        "source_doc": "MCM 2024"
+      }
+    },
+    {
+      "id": "q198",
+      "query": "Can a member be separated if they are currently under investigation for a criminal offense?",
+      "difficulty": "hard",
+      "category": "policy_lookup",
+      "source_doc": "CG Military Separations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "Q.",
+          "R."
+        ],
+        "chunk_ids": [],
+        "notes": "Chapter 2. Separation proceedings may be held in abeyance pending resolution of criminal proceedings, but are not automatically suspended.",
+        "source_doc": "Separations Manual"
+      }
+    },
+    {
+      "id": "q199",
+      "query": "How does the Coast Guard handle environmental law violations as part of an administrative investigation?",
+      "difficulty": "hard",
+      "category": "procedure",
+      "source_doc": "CG Administrative Investigations Manual",
+      "gold": {
+        "article_numbers": [],
+        "section_numbers": [
+          "N."
+        ],
+        "chunk_ids": [
+          "cgim_ch11_0013",
+          "cgim_ch11_0014",
+          "cgim_ch11_0015"
+        ],
+        "notes": "Environmental law violations in AIM Ch11 N. Previous gold M. is \"Reduction in Grade\" - confirmed wrong section by heading inspection.",
+        "source_doc": "Investigations Manual"
+      }
+    },
+    {
+      "id": "q200",
+      "query": "What article covers the wrongful use of a false pass or identification under the UCMJ?",
+      "difficulty": "medium",
+      "category": "article_lookup",
+      "source_doc": "MCM 2024",
+      "gold": {
+        "article_numbers": [
+          "105a"
+        ],
+        "section_numbers": [],
+        "chunk_ids": [],
+        "notes": "Article 105a false or unauthorized pass offenses. Using or making a fraudulent pass, permit, discharge certificate, or similar document.",
+        "source_doc": "MCM 2024"
+      }
+    }
+  ]
+}
